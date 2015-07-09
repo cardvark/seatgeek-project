@@ -27,9 +27,17 @@ var getEventsData = function(tag, near, cat) {
 		})
 	.done(function(result){
 		console.log(result);
+
+		var allCats = [];
 		result.events.forEach(function(item, idx){
 			console.log(item);
 			console.log(item.title);
+
+			item.taxonomies.forEach(function(cat, idx) {
+				if (allCats.indexOf(cat.name) == -1) {
+					allCats.push(cat.name);
+				}
+			});
 
 			if (item.time_tbd) {
 				// necessary to have a separate response for this; 
@@ -45,6 +53,9 @@ var getEventsData = function(tag, near, cat) {
 			console.log(item.url);
 			console.log(item.stats);
 		});
+
+		// can use "allCats" to create dynamic category winnowing terms for the user to use.
+		console.log(allCats);
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(error);
@@ -54,7 +65,37 @@ var getEventsData = function(tag, near, cat) {
 	console.log(result);
 };
 
-var taxonomyObj = {
+
+/*var taxonomyData = $.ajax({
+		url: "http://api.seatgeek.com/2/taxonomies",
+		dataType: "json",
+		type: "GET"
+		})
+	.done(function(result){
+		console.log(result);
+		var nameArr = result.taxonomys.map(function(item, idx){
+			return item.name;
+		});
+		console.log(nameArr);
+		nameArr.forEach(function(item, idx){
+			console.log(item);
+		});
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		console.log(error);
+	});
+*/
+/*
+function taxonomyObj(data) {
+	this.nameArr = data.responseJSON.taxonomys.map(function(item, idx){
+		return item.name;
+	});
+}
+
+var taxList = new taxonomyObj(taxonomyData);*/
+
+
+/*var taxonomyObj = {
 	taxonomyList : $.ajax({
 		url: "http://api.seatgeek.com/2/taxonomies",
 		dataType: "json",
@@ -67,10 +108,13 @@ var taxonomyObj = {
 		console.log(error);
 	}),
 
-/*	nameList : this.taxonomyList.responseJSON.taxonomys.map(function(item, idx){
+	nameList : this.taxonomyList.responseJSON.taxonomys.map(function(item, idx){
 		return item.name;
-	})*/
+	})
 }
+
+
+
 
 /*taxonomyObj.nameList = taxonomyObj.taxonomyList.responseJSON.taxonomys.map(function(item, idx){
 	return item.name;
