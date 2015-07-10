@@ -33,9 +33,10 @@ var getEventsData = function(tag, near, cat) {
 			console.log(item);
 			console.log(item.title);
 
-			item.taxonomies.forEach(function(cat, idx) {
-				if (allCats.indexOf(cat.name) == -1) {
-					allCats.push(cat.name);
+			item.taxonomies.forEach(function(tax, idx) {
+				// I need to think of either a more functional or OOP method of doing this.
+				if (allCats.indexOf(tax.name) == -1) {
+					allCats.push(tax.name);
 				}
 			});
 
@@ -53,7 +54,7 @@ var getEventsData = function(tag, near, cat) {
 			console.log(item.url);
 			console.log(item.stats);
 		});
-
+ 
 		// can use "allCats" to create dynamic category winnowing terms for the user to use.
 		console.log(allCats);
 	})
@@ -65,57 +66,18 @@ var getEventsData = function(tag, near, cat) {
 	console.log(result);
 };
 
-
-/*var taxonomyData = $.ajax({
-		url: "http://api.seatgeek.com/2/taxonomies",
-		dataType: "json",
-		type: "GET"
-		})
-	.done(function(result){
-		console.log(result);
-		var nameArr = result.taxonomys.map(function(item, idx){
-			return item.name;
-		});
-		console.log(nameArr);
-		nameArr.forEach(function(item, idx){
-			console.log(item);
-		});
-	})
-	.fail(function(jqXHR, error, errorThrown){
-		console.log(error);
-	});
-*/
-/*
-function taxonomyObj(data) {
-	this.nameArr = data.responseJSON.taxonomys.map(function(item, idx){
-		return item.name;
-	});
+var onSuccess = function(geoipResponse) {
+	var userCity = geoipResponse.city.names.en || "your city";
+	updateCity(userCity);
 }
 
-var taxList = new taxonomyObj(taxonomyData);*/
-
-
-/*var taxonomyObj = {
-	taxonomyList : $.ajax({
-		url: "http://api.seatgeek.com/2/taxonomies",
-		dataType: "json",
-		type: "GET"
-		})
-	.done(function(result){
-		console.log(result);
-	})
-	.fail(function(jqXHR, error, errorThrown){
-		console.log(error);
-	}),
-
-	nameList : this.taxonomyList.responseJSON.taxonomys.map(function(item, idx){
-		return item.name;
-	})
+var onError = function(error) {
+	console.log(error);
+	return;
 }
 
+geoip2.city(onSuccess, onError);
 
-
-
-/*taxonomyObj.nameList = taxonomyObj.taxonomyList.responseJSON.taxonomys.map(function(item, idx){
-	return item.name;
-});*/
+function updateCity(cityName) {
+	console.log(cityName);
+}
