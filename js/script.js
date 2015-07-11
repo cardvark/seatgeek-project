@@ -81,3 +81,46 @@ geoip2.city(onSuccess, onError);
 function updateCity(cityName) {
 	console.log(cityName);
 }
+
+/*var monthNames = [
+	"Jan",
+	"Feb",
+	"Mar",
+	"Apr",
+	"May",
+	"Jun",
+	"Jul",
+	"Aug",
+	"Sep",
+	"Oct",
+	"Nov",
+	"Dec"
+]
+
+var dayNames = [
+	"Sun",
+	"Mon",
+	"Tue",
+	"Wed",
+	"Thu",
+	"Fri",
+	"Sat"
+]*/
+
+function dateObj (dateString) {
+/*	this.month = monthNames[dateVal.getMonth()];
+	this.day = dayNames[dateVal.getDay()];
+	this.date = dateVal.getDate();*/
+	this.showDate = moment(dateString).format('MMM Do');
+	this.showTime = moment(dateString).format('h:mm a');
+
+	// sad to deprecate the below; was fun to look up and refactor.
+	// but i'm better off using the moment.js library.	
+/*	var hours = dateVal.getHours();
+	var minutes = dateVal.getMinutes();
+	var ampm = hours >= 12 ? 'pm' : 'am';
+	hours = hours % 12;
+	hours = hours || 12;
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+	this.strTime = hours + ':' + minutes + ' ' + ampm;*/
+}
