@@ -1,0 +1,83 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* div {
+	border: 1px solid chocolate;
+} */
+
+.headerSection {
+	height: 10rem;
+	
+}
+
+.content {
+	width: 60rem;
+	margin: 0 auto;
+}
+
+.mainSection {
+
+}
+
+.mainSection .content {
+	min-height: 30rem;
+	background-color: gray;	
+}
+
+.searchContainer {
+	background-color: #135BB1;
+	padding: 2rem 2rem;
+}
+
+.formBox {
+	padding: 10px;
+	background-color: white;
+	width: 30rem;
+}
+
+.inputSpace {
+	border: 0;
+	font-size: 1.25em;
+	width: 100%;
+}
+
+.resultsContainer {
+
+}
+
+.searchResults {
+	width: 70%;
+	float: left;
+}
+
+.eventsGeo, .eventsAll {
+	padding: 1.25em;
+	border-bottom: 1px dotted green;
+}
+
+.resultList {
+
+}
+
+.resultItem {
+	padding: 2em;
+	border-bottom: 1px dotted green;
+}
+
+.taxonomiesResults {
+	float: left;
+}
+
+.taxItem {
+
+}
+
+.taxList {
+
+}
+
+.clear {
+	clear: both;
+}
