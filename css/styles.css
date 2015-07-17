@@ -23,7 +23,7 @@ body {
 
 .mainSection .content {
 	min-height: 30rem;
-	background-color: gray;	
+	background-color: white;	
 }
 
 .searchContainer {
@@ -34,7 +34,8 @@ body {
 .formBox {
 	padding: 10px;
 	background-color: white;
-	width: 30rem;
+	width: 66%;
+	float: left;
 }
 
 .inputSpace {
@@ -43,6 +44,41 @@ body {
 	width: 100%;
 }
 
+.searchButton {
+	border-top: 1px solid #639d07;
+	background: #639d07;
+	background: -webkit-gradient(linear, left top, left bottom, from(#639d07), to(#639d07));
+	background: -webkit-linear-gradient(top, #639d07, #639d07);
+	background: -moz-linear-gradient(top, #639d07, #639d07);
+	background: -ms-linear-gradient(top, #639d07, #639d07);
+	background: -o-linear-gradient(top, #639d07, #639d07);
+	padding: 8px 40px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	color: white;
+	font-size: 1.5em;
+	font-family: Georgia, serif;
+	text-decoration: none;
+	margin-left: 5.5rem;
+	float: left;
+}
+
+.searchButton:hover {
+   border-top-color: #639d07;
+   background: #639d07;
+   color: #ffffff;
+   cursor: pointer;
+   }
+.searchButton:active {
+   border-top-color: #4b7508;
+   background: #4b7508;
+   }
+
 .resultsContainer {
 
 }
@@ -50,6 +86,7 @@ body {
 .searchResults {
 	width: 70%;
 	float: left;
+	border-right: 1px dotted green;
 }
 
 .eventsGeo, .eventsAll {
@@ -58,7 +95,11 @@ body {
 }
 
 .resultList {
+	margin: 0px;
+}
 
+.resultList, .taxList {
+	list-style-type: none;
 }
 
 .resultItem {
@@ -66,12 +107,34 @@ body {
 	border-bottom: 1px dotted green;
 }
 
+.searchResults, .taxonomiesResults {
+
+}
+
 .taxonomiesResults {
-	float: left;
+	width: 29%;
+	float: right;
+
+}
+
+.taxonomiesResults > div:first-child {
+	padding: 1.25em;
+	border-bottom: 1px dotted green;
 }
 
 .taxItem {
+	padding: 2px;
+	margin: 2px;
+	border: 1px dotted gray;
+}
 
+.taxItem:active {
+	border-top-color: #4b7508;
+	background: lightgray;
+}
+
+.taxItem:hover {
+	cursor: pointer;
 }
 
 .taxList {
